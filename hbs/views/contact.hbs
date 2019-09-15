@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<h1>{{title}}</h1>
+{{#if isEmailVisible}}
+    <h3>Emails list:</h3>
+    {{#each emails}}
+        <li>{{this}}</li>
+    {{/each}}
+{{/if}}
+<p>Phone number: {{phone}}</p>
+</body>
+<html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Input your personal data</h1>
+    <form name="registerForm">
+        <label>Name</label><br>
+        <input type="text" name="userName"><br><br>
+        <label>Age</label><br>
+        <input type="number" name="userAge"><br><br>
+        <input type="submit" id="submit">
+    </form>
+    <script>
+      document.getElementById('submit').onclick = e => {
+        e.preventDefault();
+        const userName = document.forms['registerForm'].elements['userName'].value;
+        const userAge = document.forms['registerForm'].elements['userAge'].value;
+
+        const request = new XMLHttpRequest();
+        const user = JSON.stringify({userName, userAge});
+        request.open('POST', '/user', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.addEventListener('load', ()=>{
+          const receivedUser = JSON.parse(request.response);
+          console.log(`User name: ${receivedUser.userName}
+    User Age: ${receivedUser.userAge}`);
+        });
+        request.send(user);
+      };
+    </script>
+</body>
+</html>
