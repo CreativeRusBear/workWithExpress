@@ -1,15 +1,15 @@
-doctype html
-html(lang='en')
-    head
-        meta(charset='utf-8')
-        title #{title}
-    body
-        h1 #{title} (using Pug)
-        if emailsVisible
-            h3 Emails:
-            ul
-                each email in emails
-                    li=email
-        else
-            h3 Emails not found
-        p Phone: #{phone}
+extends layout
+
+block title
+    title #{title}
+
+block content
+    h1 #{title} (using Pug)
+    if emailsVisible
+        h3 Emails:
+        ul
+            each email in emails
+                li=email
+    else
+        h3 Emails not found
+    p Phone: #{phone}
